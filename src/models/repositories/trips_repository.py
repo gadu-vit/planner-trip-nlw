@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, Tuple
 from sqlite3 import Connection
 
 class TripsRepository:
@@ -24,7 +24,7 @@ class TripsRepository:
         )
         self.__conn.commit()
 
-    def find_trip_by_id(self, trip_id: str):
+    def find_trip_by_id(self, trip_id: str) -> Tuple:
         cursor = self.__conn.cursor()
         cursor.execute(
             '''SELECT * FROM trips WHERE id = ?''', (trip_id,)
